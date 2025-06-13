@@ -1,3 +1,12 @@
+/**
+ * Copyright (c) Meta Platforms, Inc. and affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+// this object is generated from Flow Builder under "..." > Endpoint > Snippets > Responses
+// To navigate to a screen, return the corresponding response from the endpoint. Make sure the response is encrypted.
 const SCREEN_RESPONSES = {
     PRODUCT_SELECTOR: {
         "screen": "PRODUCT_SELECTOR",
@@ -5,25 +14,25 @@ const SCREEN_RESPONSES = {
             "products": [
                 {
                     "id": "0_mobile_phones",
-                    "title": "Mobile phones"
+                    "title": "🍔 Hamburguesas de Barrio"
                 },
                 {
                     "id": "1_eBook_readers",
-                    "title": "eBook readers"
+                    "title": "🥩 Hamburguesas Dobles"
                 },
                 {
                     "id": "2_cameras",
-                    "title": "Cameras"
+                    "title": "🌭 Super Perros"
                 },
                 {
-                    "id": "2_cameras2",
-                    "title": "Cameras"
+                    "id": "2_other",
+                    "title": "🍟 Las Papas"
                 }
             ]
         }
     },
-    PRODUCT_OPTIONS: {
-        "screen": "PRODUCT_OPTIONS",
+    OPTIONS: {
+        "screen": "OPTIONS",
         "data": {
             "selected_product": "phone",
             "cta_label": "View phones",
@@ -91,8 +100,8 @@ const SCREEN_RESPONSES = {
             ]
         }
     },
-    DRINKS: {
-        "screen": "DRINKS",
+    OFFER: {
+        "screen": "OFFER",
         "data": {
             "selected_product": "phone",
             "offer_label": "Here are 4 shortlisted phones",
@@ -176,36 +185,36 @@ export const getNextScreen = async (decryptedBody) => {
       case "PRODUCT_SELECTOR":
         const product_type = data.product_selection.split('_').pop().slice(0, -1);
         return {
-          ...SCREEN_RESPONSES.PRODUCT_OPTIONS,
+          ...SCREEN_RESPONSES.OPTIONS,
           data: {
             // copy initial screen data then override specific fields
-            ...SCREEN_RESPONSES.PRODUCT_OPTIONS.data,
+            ...SCREEN_RESPONSES.OPTIONS.data,
             phone_use_case: data.product_selection === SCREEN_RESPONSES.PRODUCT_SELECTOR.data.products[0].id,
             cta_label: "View " + product_type + "s",
             screen_heading: "Let's find the perfect " + product_type + " offer for you",
             selected_product: product_type,
           },
         };
-      case "PRODUCT_OPTIONS":
+      case "OPTIONS":
         // TODO here process user selected preferences and return customised offer
         return {
-          ...SCREEN_RESPONSES.DRINKS,
+          ...SCREEN_RESPONSES.OFFER,
           data: {
             // copy initial screen data then override specific fields
-            ...SCREEN_RESPONSES.DRINKS.data,
+            ...SCREEN_RESPONSES.OFFER.data,
             offer_label: "Here are 4 shortlisted " + data.selected_product + "s",
             selected_product: data.selected_product,
           },
         };
 
-      case "DRINKS":
+      case "OFFER":
         // TODO return details of selected device
         return {
           ...SCREEN_RESPONSES.PRODUCT_DETAIL,
           data: {
             // copy initial screen data then override specific fields
             ...SCREEN_RESPONSES.PRODUCT_DETAIL.data,
-            product_name: SCREEN_RESPONSES.DRINKS.data.shortlisted_devices
+            product_name: SCREEN_RESPONSES.OFFER.data.shortlisted_devices
                 .filter((a) => a.id === data.device)
                 .map((a) => a.title)[0],
             selected_device: data.device,
