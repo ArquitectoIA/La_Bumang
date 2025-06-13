@@ -37,7 +37,10 @@ const SCREEN_RESPONSES = {
             "selected_product": "phone",
             "cta_label": "View phones",
             "screen_heading": "Let's find the perfect phone offer for you",
-            "phone_use_case": false,
+            "chk_sencillas": false,
+            "chk_dobles": false,
+            "chk_perros": false,
+            "chk_papas": false,
             "preferred_brands": [
                 {
                     "id": "0_TechWave",
@@ -189,7 +192,7 @@ export const getNextScreen = async (decryptedBody) => {
           data: {
             // copy initial screen data then override specific fields
             ...SCREEN_RESPONSES.OPTIONS.data,
-            phone_use_case: data.product_selection[0] === SCREEN_RESPONSES.PRODUCT_SELECTOR.data.products[0].id,
+            chk_sencillas: data.product_selection[0] === SCREEN_RESPONSES.PRODUCT_SELECTOR.data.products[0].id,
             cta_label: "View " + product_type + "s",
             screen_heading: "Let's find the perfect " + product_type + " offer for you",
             selected_product: product_type,
