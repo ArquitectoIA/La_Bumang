@@ -13,19 +13,19 @@ const SCREEN_RESPONSES = {
         "data": {
             "products": [
                 {
-                    "id": "0_mobile_phones",
+                    "id": "sencillas",
                     "title": "🍔 Hamburguesas de Barrio"
                 },
                 {
-                    "id": "1_eBook_readers",
+                    "id": "dobles",
                     "title": "🥩 Hamburguesas Dobles"
                 },
                 {
-                    "id": "2_cameras",
+                    "id": "perros",
                     "title": "🌭 Super Perros"
                 },
                 {
-                    "id": "2_other",
+                    "id": "papas",
                     "title": "🍟 Las Papas"
                 }
             ]
@@ -183,7 +183,7 @@ export const getNextScreen = async (decryptedBody) => {
     switch (screen) {
       // handles when user submits PRODUCT_SELECTOR screen
       case "PRODUCT_SELECTOR":
-        const product_type = data.product_selection.split('_').pop().slice(0, -1);
+        const product_type = data.product_selection[0] //data.product_selection.split('_').pop().slice(0, -1);
         return {
           ...SCREEN_RESPONSES.OPTIONS,
           data: {
