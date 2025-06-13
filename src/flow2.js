@@ -176,36 +176,36 @@ export const getNextScreen = async (decryptedBody) => {
       case "PRODUCT_SELECTOR":
         const product_type = data.product_selection.split('_').pop().slice(0, -1);
         return {
-          ...SCREEN_RESPONSES.OPTIONS,
+          ...SCREEN_RESPONSES.PRODUCT_OPTIONS,
           data: {
             // copy initial screen data then override specific fields
-            ...SCREEN_RESPONSES.OPTIONS.data,
+            ...SCREEN_RESPONSES.PRODUCT_OPTIONS.data,
             phone_use_case: data.product_selection === SCREEN_RESPONSES.PRODUCT_SELECTOR.data.products[0].id,
             cta_label: "View " + product_type + "s",
             screen_heading: "Let's find the perfect " + product_type + " offer for you",
             selected_product: product_type,
           },
         };
-      case "OPTIONS":
+      case "PRODUCT_OPTIONS":
         // TODO here process user selected preferences and return customised offer
         return {
-          ...SCREEN_RESPONSES.OFFER,
+          ...SCREEN_RESPONSES.DRINKS,
           data: {
             // copy initial screen data then override specific fields
-            ...SCREEN_RESPONSES.OFFER.data,
+            ...SCREEN_RESPONSES.DRINKS.data,
             offer_label: "Here are 4 shortlisted " + data.selected_product + "s",
             selected_product: data.selected_product,
           },
         };
 
-      case "OFFER":
+      case "DRINKS":
         // TODO return details of selected device
         return {
           ...SCREEN_RESPONSES.PRODUCT_DETAIL,
           data: {
             // copy initial screen data then override specific fields
             ...SCREEN_RESPONSES.PRODUCT_DETAIL.data,
-            product_name: SCREEN_RESPONSES.OFFER.data.shortlisted_devices
+            product_name: SCREEN_RESPONSES.DRINKS.data.shortlisted_devices
                 .filter((a) => a.id === data.device)
                 .map((a) => a.title)[0],
             selected_device: data.device,
