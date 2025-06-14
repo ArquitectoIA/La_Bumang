@@ -41,6 +41,7 @@ const SCREEN_RESPONSES = {
             "chk_dobles": false,
             "chk_perros": false,
             "chk_papas": false,
+            "chk_trad": false,
             "preferred_brands": [
                 {
                     "id": "0_TechWave",
