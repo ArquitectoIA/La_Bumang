@@ -35,8 +35,6 @@ const SCREEN_RESPONSES = {
         "screen": "OPTIONS",
         "data": {
             "selected_product": "phone",
-            "cta_label": "View phones",
-            "screen_heading": "Let's find the perfect phone offer for you",
             "chk_sencillas": false,
             "chk_dobles": false,
             "chk_perros": false,
@@ -57,92 +55,28 @@ const SCREEN_RESPONSES = {
             "chk_pa_xl": false,
             "chk_salchi_xl": false,
             "chk_chori_xl": false,
-            "chk_pa_locas": false,
-            "preferred_brands": [
-                {
-                    "id": "0_TechWave",
-                    "title": "TechWave"
-                },
-                {
-                    "id": "1_Apex",
-                    "title": "Apex"
-                }
-            ],
-            "phone_uses": [
-                {
-                    "id": "0_Social_networking",
-                    "title": "Social networking"
-                },
-                {
-                    "id": "1_Video_streaming",
-                    "title": "Video streaming"
-                },
-                {
-                    "id": "2_Gaming",
-                    "title": "Gaming"
-                },
-                {
-                    "id": "3_Productivity",
-                    "title": "Productivity"
-                },
-                {
-                    "id": "4_Work_communication",
-                    "title": "Work communication"
-                }
-            ],
-            "phone_sim": [
-                {
-                    "id": "0_eSim",
-                    "title": "eSim"
-                },
-                {
-                    "id": "1_Standard_sim",
-                    "title": "Standard sim"
-                }
-            ],
-            "preferred_budget": [
-                {
-                    "id": "0_\u00a3100_-_\u00a3250",
-                    "title": "\u00a3100 - \u00a3250"
-                },
-                {
-                    "id": "1_\u00a3250_-_\u00a3500",
-                    "title": "\u00a3250 - \u00a3500"
-                },
-                {
-                    "id": "2_\u00a3500_-_\u00a31000",
-                    "title": "\u00a3500 - \u00a31000"
-                },
-                {
-                    "id": "3_Above_\u00a31000",
-                    "title": "Above \u00a31000"
-                }
-            ]
+            "chk_pa_locas": false
         }
     },
     OFFER: {
         "screen": "OFFER",
         "data": {
             "selected_product": "phone",
-            "offer_label": "Here are 4 shortlisted phones",
-            "shortlisted_devices": [
-                {
-                    "id": "0_TechWave_TW14_Pro",
-                    "title": "TechWave TW14 Pro"
-                },
-                {
-                    "id": "1_Apex_Aura",
-                    "title": "Apex Aura"
-                },
-                {
-                    "id": "2_VirtuVision_VX2",
-                    "title": "VirtuVision VX2"
-                },
-                {
-                    "id": "3_Nova_N1",
-                    "title": "Nova N1"
-                }
-            ]
+            "chk_jg_caj": false,
+            "chk_gaseosa": false,
+            "chk_agua_gas": false,
+            "chk_agua_sn_gas": false,
+            "chk_pet": false,
+            "chk_soda": false,
+            "chk_jg_hit": false,
+            "chk_soda_hatsu": false,
+            "chk_mr_tea": false,
+            "chk_h2o_pet": false,
+            "chk_cola_pola": false,
+            "chk_cervezas": false,
+            "chk_coronita": false,
+            "chk_club_col": false,
+            "chk_te_hatsu": false
         }
     },
     PRODUCT_DETAIL: {
