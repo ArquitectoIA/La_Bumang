@@ -210,6 +210,9 @@ export const getNextScreen = async (decryptedBody) => {
             // copy initial screen data then override specific fields
             ...SCREEN_RESPONSES.OPTIONS.data,
             chk_sencillas: data.product_selection[0] === SCREEN_RESPONSES.PRODUCT_SELECTOR.data.products[0].id,
+            chk_dobles: data.product_selection[1] === SCREEN_RESPONSES.PRODUCT_SELECTOR.data.products[1].id,
+            chk_perros: data.product_selection[2] === SCREEN_RESPONSES.PRODUCT_SELECTOR.data.products[2].id,
+            chk_papas: data.product_selection[3] === SCREEN_RESPONSES.PRODUCT_SELECTOR.data.products[3].id,
             cta_label: "View " + product_type + "s",
             screen_heading: "Let's find the perfect " + product_type + " offer for you",
             selected_product: product_type,
