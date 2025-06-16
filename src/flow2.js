@@ -203,16 +203,21 @@ export const getNextScreen = async (decryptedBody) => {
     switch (screen) {
       // handles when user submits PRODUCT_SELECTOR screen
       case "PRODUCT_SELECTOR":
+        const PRODUCT_IDS = SCREEN_RESPONSES.PRODUCT_SELECTOR.data.products.map(p => p.id);
+        const SELECTED_IDS = new Set(data.product_selection ?? []);
+        const COINCIDENCE = PRODUCT_IDS.some(id => SELECTED_IDS.has(id));
+        const PRODUCT_FLAGS = PRODUCT_IDS.reduce((acc, id) => {
+          acc[`chk_${id}`] = SELECTED_IDS.has(id);
+          return acc;
+        }, {});
         const product_type = data.product_selection[0] //data.product_selection.split('_').pop().slice(0, -1);
+        
         return {
           ...SCREEN_RESPONSES.OPTIONS,
           data: {
             // copy initial screen data then override specific fields
             ...SCREEN_RESPONSES.OPTIONS.data,
-            chk_sencillas: data.product_selection[0] === SCREEN_RESPONSES.PRODUCT_SELECTOR.data.products[0].id,
-            chk_dobles: data.product_selection[1] === SCREEN_RESPONSES.PRODUCT_SELECTOR.data.products[1].id,
-            chk_perros: data.product_selection[2] === SCREEN_RESPONSES.PRODUCT_SELECTOR.data.products[2].id,
-            chk_papas: data.product_selection[3] === SCREEN_RESPONSES.PRODUCT_SELECTOR.data.products[3].id,
+            PRODUCT_FLAGS,
             cta_label: "View " + product_type + "s",
             screen_heading: "Let's find the perfect " + product_type + " offer for you",
             selected_product: product_type,
