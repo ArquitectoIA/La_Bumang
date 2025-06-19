@@ -8,8 +8,8 @@
 // this object is generated from Flow Builder under "..." > Endpoint > Snippets > Responses
 // To navigate to a screen, return the corresponding response from the endpoint. Make sure the response is encrypted.
 const SCREEN_RESPONSES = {
-    PRODUCT_SELECTOR: {
-        "screen": "PRODUCT_SELECTOR",
+    MENU_PRINCIPAL: {
+        "screen": "MENU_PRINCIPAL",
         "data": {
             "products": [
                 {
@@ -31,8 +31,8 @@ const SCREEN_RESPONSES = {
             ]
         }
     },
-    OPTIONS: {
-        "screen": "OPTIONS",
+    SEL_MENU: {
+        "screen": "SEL_MENU",
         "data": {
             "selected_product": "phone",
             "chk_sencillas": false,
@@ -71,8 +71,12 @@ const SCREEN_RESPONSES = {
             "chk_pa_locas": false
         }
     },
-    ADDITIONAL: {
-        "screen": "ADDITIONAL",
+    CANTIDADES: {
+        "screen": "CANTIDADES",
+        "data": {}
+    },
+    ADICIONALES: {
+        "screen": "ADICIONALES",
         "data": {
             "selected_product": "phone",
             "chk_ad_tocin": false,
@@ -83,8 +87,8 @@ const SCREEN_RESPONSES = {
             "chk_ad_carn_ham": false
         }
     },
-    OFFER: {
-        "screen": "OFFER",
+    BEBIDAS: {
+        "screen": "BEBIDAS",
         "data": {
             "selected_product": "phone",
             "chk_jg_caj": false,
@@ -104,8 +108,8 @@ const SCREEN_RESPONSES = {
             "chk_te_hatsu": false
         }
     },
-    PRODUCT_DETAIL: {
-        "screen": "PRODUCT_DETAIL",
+    PRODUCT_DETALLE: {
+        "screen": "PRODUCT_DETALLE",
         "data": {
             "selected_device": "0_TechWave_TW14_Pro",
             "image_src": "",
@@ -153,7 +157,7 @@ export const getNextScreen = async (decryptedBody) => {
   // handle initial request when opening the flow and display LOAN screen
   if (action === "INIT") {
     return {
-      ...SCREEN_RESPONSES.PRODUCT_SELECTOR,
+      ...SCREEN_RESPONSES.MENU_PRINCIPAL,
     };
   }
 
@@ -161,8 +165,8 @@ export const getNextScreen = async (decryptedBody) => {
     // handle the request based on the current screen
     switch (screen) {
       // handles when user submits PRODUCT_SELECTOR screen
-      case "PRODUCT_SELECTOR":
-        const PRODUCT_IDS = SCREEN_RESPONSES.PRODUCT_SELECTOR.data.products.map(p => p.id);
+      case "MENU_PRINCIPAL":
+        const PRODUCT_IDS = SCREEN_RESPONSES.MENU_PRINCIPAL.data.products.map(p => p.id);
         const SELECTED_IDS = new Set(data.product_selection ?? []);
         const COINCIDENCE = PRODUCT_IDS.some(id => SELECTED_IDS.has(id));
         const PRODUCT_FLAGS = PRODUCT_IDS.reduce((acc, id) => {
@@ -172,43 +176,47 @@ export const getNextScreen = async (decryptedBody) => {
         const product_type = data.product_selection[0] //data.product_selection.split('_').pop().slice(0, -1);
         
         return {
-          ...SCREEN_RESPONSES.OPTIONS,
+          ...SCREEN_RESPONSES.SEL_MENU,
           data: {
             // copy initial screen data then override specific fields
-            ...SCREEN_RESPONSES.OPTIONS.data,
+            ...SCREEN_RESPONSES.SEL_MENU.data,
             ...PRODUCT_FLAGS,
             cta_label: "View " + product_type + "s",
             screen_heading: "Let's find the perfect " + product_type + " offer for you",
             selected_product: product_type,
           },
         };
-      case "OPTIONS":
+      case "SEL_MENU":
         // TODO here process user selected preferences and return customised offer
         return {
-          ...SCREEN_RESPONSES.ADDITIONAL,
+          ...SCREEN_RESPONSES.CANTIDADES,
           data: {
             // copy initial screen data then override specific fields
-            ...SCREEN_RESPONSES.ADDITIONAL.data,
+            ...SCREEN_RESPONSES.CANTIDADES.data,
             selected_product: data.selected_product,
           },
         };
-      case "ADDITIONAL":
+      case "CANTIDADES":
+        return {
+          ...SCREEN_RESPONSES.ADICIONALES
+        };
+      case "ADICIONALES":
         // TODO here process user selected preferences and return customised offer
         return {
-          ...SCREEN_RESPONSES.OFFER,
+          ...SCREEN_RESPONSES.BEBIDAS,
           data: {
             // copy initial screen data then override specific fields
-            ...SCREEN_RESPONSES.OFFER.data,
+            ...SCREEN_RESPONSES.BEBIDAS.data,
             selected_product: data.selected_product,
           },
         };
-      case "OFFER":
+      case "BEBIDAS":
         // TODO return details of selected device
         return {
-          ...SCREEN_RESPONSES.PRODUCT_DETAIL,
+          ...SCREEN_RESPONSES.PRODUCT_DETALLE,
           data: {
             // copy initial screen data then override specific fields
-            ...SCREEN_RESPONSES.PRODUCT_DETAIL.data,
+            ...SCREEN_RESPONSES.PRODUCT_DETALLE.data,
             selected_device: data.device,
           },
         };
