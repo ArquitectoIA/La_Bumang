@@ -199,7 +199,7 @@ export const getNextScreen = async (decryptedBody) => {
       case "CANTIDADES":
         return {
           ...SCREEN_RESPONSES.ADICIONALES,
-          ...data.selected_product,
+          ...data,
         };
       case "ADICIONALES":
         // TODO here process user selected preferences and return customised offer
