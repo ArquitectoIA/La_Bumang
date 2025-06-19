@@ -222,6 +222,7 @@ export const getNextScreen = async (decryptedBody) => {
             // copy initial screen data then override specific fields
             ...SCREEN_RESPONSES.PRODUCT_DETALLE.data,
             selected_device: data.device,
+            ...data,
           },
         };
 
