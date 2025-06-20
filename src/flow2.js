@@ -195,6 +195,7 @@ export const getNextScreen = async (decryptedBody) => {
         return {
           ...SCREEN_RESPONSES.ADICIONALES,
           data: {
+            ...SCREEN_RESPONSES.ADICIONALES.data,
             ...data,
           },
         };
