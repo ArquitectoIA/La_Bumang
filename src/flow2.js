@@ -91,21 +91,16 @@ const SCREEN_RESPONSES = {
         "screen": "BEBIDAS",
         "data": {
             "selected_product": "phone",
-            "chk_jg_caj": false,
-            "chk_gaseosa": false,
-            "chk_agua_gas": false,
-            "chk_agua_sn_gas": false,
-            "chk_pet": false,
-            "chk_soda": false,
-            "chk_jg_hit": false,
-            "chk_soda_hatsu": false,
+            "chk_gas_mzn": false,
+            "chk_gas_pepsi": false,
+            "chk_gas_kola": false,
+            "chk_hit_tropical": false,
+            "chk_hit_mango": false,
+            "chk_hit_mora": false,
             "chk_mr_tea": false,
-            "chk_h2o_pet": false,
-            "chk_cola_pola": false,
-            "chk_cervezas": false,
-            "chk_coronita": false,
-            "chk_club_col": false,
-            "chk_te_hatsu": false
+            "chk_agua_sn_gas": false,
+            "chk_agua_cn_gas": false,
+            "chk_h2o_pet": false
         }
     },
     PRODUCT_DETALLE: {
