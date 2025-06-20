@@ -209,6 +209,9 @@ export const getNextScreen = async (decryptedBody) => {
             ...SCREEN_RESPONSES.BEBIDAS.data,
             selected_product: data.selected_product,
           },
+          productos: {
+            ...data,
+          }
         };
       case "BEBIDAS":
         // TODO return details of selected device
