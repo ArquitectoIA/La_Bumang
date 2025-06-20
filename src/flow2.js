@@ -34,7 +34,6 @@ const SCREEN_RESPONSES = {
     SEL_MENU: {
         "screen": "SEL_MENU",
         "data": {
-            "selected_product": "phone",
             "chk_sencillas": false,
             "chk_dobles": false,
             "chk_perros": false,
@@ -78,7 +77,6 @@ const SCREEN_RESPONSES = {
     ADICIONALES: {
         "screen": "ADICIONALES",
         "data": {
-            "selected_product": "phone",
             "chk_ad_tocin": false,
             "chk_ad_queso": false,
             "chk_ad_chorizo": false,
@@ -90,7 +88,6 @@ const SCREEN_RESPONSES = {
     BEBIDAS: {
         "screen": "BEBIDAS",
         "data": {
-            "selected_product": "phone",
             "chk_gas_mzn": false,
             "chk_gas_pepsi": false,
             "chk_gas_kola": false,
@@ -163,22 +160,16 @@ export const getNextScreen = async (decryptedBody) => {
       case "MENU_PRINCIPAL":
         const PRODUCT_IDS = SCREEN_RESPONSES.MENU_PRINCIPAL.data.products.map(p => p.id);
         const SELECTED_IDS = new Set(data.product_selection ?? []);
-        const COINCIDENCE = PRODUCT_IDS.some(id => SELECTED_IDS.has(id));
         const PRODUCT_FLAGS = PRODUCT_IDS.reduce((acc, id) => {
           acc[`chk_${id}`] = SELECTED_IDS.has(id);
           return acc;
         }, {});
-        const product_type = data.product_selection[0] //data.product_selection.split('_').pop().slice(0, -1);
-        
+
         return {
           ...SCREEN_RESPONSES.SEL_MENU,
           data: {
-            // copy initial screen data then override specific fields
             ...SCREEN_RESPONSES.SEL_MENU.data,
             ...PRODUCT_FLAGS,
-            cta_label: "View " + product_type + "s",
-            screen_heading: "Let's find the perfect " + product_type + " offer for you",
-            selected_product: product_type,
           },
         };
       case "SEL_MENU":
@@ -186,9 +177,7 @@ export const getNextScreen = async (decryptedBody) => {
         return {
           ...SCREEN_RESPONSES.CANTIDADES,
           data: {
-            // copy initial screen data then override specific fields
             ...SCREEN_RESPONSES.CANTIDADES.data,
-            selected_product: data.selected_product,
           },
         };
       case "CANTIDADES":
@@ -207,10 +196,6 @@ export const getNextScreen = async (decryptedBody) => {
             // copy initial screen data then override specific fields
             ...data,
             ...SCREEN_RESPONSES.BEBIDAS.data,
-            selected_product: data.selected_product,
-            productos: {
-              ...data
-            },
           },
         };
       case "BEBIDAS":
