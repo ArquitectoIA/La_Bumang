@@ -125,6 +125,24 @@ const SCREEN_RESPONSES = {
 };
 
 
+const SPLIT_PRODUCTS_AND_NOTES = (dataObj = {}) => {
+  const SELECTED_PRODUCTS = [];
+  const OBS_PRODUCTS = [];
+
+  for (const [key, value] of Object.entries(dataObj)) {
+    if (key.startsWith("can_")) {
+      Array.isArray(value) ? SELECTED_PRODUCTS.push(...value) : SELECTED_PRODUCTS.push(value);
+    } else if (key.startsWith("obs_")) {
+      Array.isArray(value) ? OBS_PRODUCTS.push(...value) : OBS_PRODUCTS.push(value);
+    }
+  }
+  return {SELECTED_PRODUCTS, OBS_PRODUCTS};
+
+};
+
+
+
+
 export const getNextScreen = async (decryptedBody) => {
   const { screen, data, version, action, flow_token } = decryptedBody;
   // handle health check request
@@ -181,11 +199,17 @@ export const getNextScreen = async (decryptedBody) => {
           },
         };
       case "CANTIDADES":
+        const {SELECTED_PRODUCTS, OBS_PRODUCTS} = SPLIT_PRODUCTS_AND_NOTES(data);
+        console.log({SELECTED_PRODUCTS, OBS_PRODUCTS});
+
         return {
           ...SCREEN_RESPONSES.ADICIONALES,
           data: {
             ...SCREEN_RESPONSES.ADICIONALES.data,
             ...data,
+            SELECTED_PRODUCTS,
+            OBS_PRODUCTS,
+
           },
         };
       case "ADICIONALES":
