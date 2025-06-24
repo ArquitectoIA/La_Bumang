@@ -140,6 +140,21 @@ const SPLIT_PRODUCTS_AND_NOTES = (dataObj = {}) => {
 
 };
 
+const SPLIT_ADDITIONAL_AND_NOTES = (dataObj = {}) => {
+  const SELECTED_ADDITIONAL = [];
+  const OBS_ADDITIONAL = [];
+
+  for (const [key, value] of Object.entries(dataObj)) {
+    if (key.startsWith("can_ad")) {
+      Array.isArray(value) ? SELECTED_ADDITIONAL.push(...value) : SELECTED_ADDITIONAL.push(value);
+    } else if (key.startsWith("obs_")) {
+      Array.isArray(value) ? OBS_ADDITIONAL.push(...value) : OBS_ADDITIONAL.push(value);
+    }
+  }
+  return {SELECTED_ADDITIONAL, OBS_ADDITIONAL};
+
+};
+
 
 
 
@@ -214,12 +229,17 @@ export const getNextScreen = async (decryptedBody) => {
         };
       case "ADICIONALES":
         // TODO here process user selected preferences and return customised offer
+        const {SELECTED_ADDITIONAL, OBS_ADDITIONAL} = SPLIT_ADDITIONAL_AND_NOTES(data);
+        console.log({SELECTED_ADDITIONAL, OBS_ADDITIONAL});
         return {
           ...SCREEN_RESPONSES.BEBIDAS,
           data: {
             // copy initial screen data then override specific fields
             ...data,
             ...SCREEN_RESPONSES.BEBIDAS.data,
+            SELECTED_ADDITIONAL,
+            OBS_ADDITIONAL,
+
           },
         };
       case "BEBIDAS":
