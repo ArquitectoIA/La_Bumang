@@ -148,7 +148,7 @@ const SPLIT_ADDITIONAL_AND_NOTES = (dataObj = {}) => {
   for (const [key, value] of Object.entries(dataObj)) {
     if (key.startsWith("can_ad")) {
       Array.isArray(value) ? SELECTED_ADDITIONAL.push(...value) : SELECTED_ADDITIONAL.push(value);
-    } else if (key.startsWith("obs_")) {
+    } else if (key.startsWith("obs_adicionales")) {
       Array.isArray(value) ? OBS_ADDITIONAL.push(...value) : OBS_ADDITIONAL.push(value);
     }
   }
