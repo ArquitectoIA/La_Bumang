@@ -82,7 +82,8 @@ const SCREEN_RESPONSES = {
             "chk_ad_chorizo": false,
             "chk_ad_pollo": false,
             "chk_ad_salchi": false,
-            "chk_ad_carn_ham": false
+            "chk_ad_carn_ham": false,
+            "chk_obs_adicionales": false
         }
     },
     BEBIDAS: {
