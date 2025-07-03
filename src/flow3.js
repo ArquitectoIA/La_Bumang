@@ -1,6 +1,43 @@
 const SCREEN_RESPONSES = {
+
   SEL_MENU: {
     screen: "SEL_MENU",
+    data: {
+      chk_trad_sp: false,
+      chk_trad_cp: false,
+      chk_carn_pollo_sp: false,
+      chk_carn_pollo_cp: false,
+      chk_carn_tocin_sp: false,
+      chk_carn_tocin_cp: false,
+      chk_esp_sp: false,
+      chk_esp_cp: false,
+      chk_sl_pollo_sp: false,
+      chk_sl_pollo_cp: false,
+      chk_d_carn_sp: false,
+      chk_d_carn_cp: false,
+      chk_d_carn_pollo_sp: false,
+      chk_d_carn_pollo_cp: false,
+      chk_d_carn_tocin_sp: false,
+      chk_d_carn_tocin_cp: false,
+      chk_d_esp_sp: false,
+      chk_d_esp_cp: false,
+      chk_pe_trad_sp: false,
+      chk_pe_trad_cp: false,
+      chk_pe_pollo_sp: false,
+      chk_pe_pollo_cp: false,
+      chk_pe_tocin_sp: false,
+      chk_pe_tocin_cp: false,
+      chk_pe_esp_sp: false,
+      chk_pe_esp_cp: false,
+      chk_pa_xl: false,
+      chk_salchi_xl: false,
+      chk_chori_xl: false,
+      chk_pa_locas: false,
+    },
+  },
+
+  CANTIDADES: {
+    screen: "CANTIDADES",
     data: {
       chk_trad_sp: false,
       chk_trad_cp: false,
@@ -145,6 +182,12 @@ export const getNextScreen = async (decryptedBody) => {
     // handle the request based on the current screen
     switch (screen) {
       // handles when user submits PRODUCT_SELECTOR screen
+
+      case "SEL_MENU":
+        return {
+          ...SCREEN_RESPONSES.CANTIDADES,
+          ...data,
+        }
 
       case "CANTIDADES":
         const { SELECTED_PRODUCTS, OBS_PRODUCTS } =
