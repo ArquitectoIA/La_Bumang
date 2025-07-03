@@ -1,5 +1,4 @@
 const SCREEN_RESPONSES = {
-
   SEL_MENU: {
     screen: "SEL_MENU",
     data: {
@@ -186,8 +185,11 @@ export const getNextScreen = async (decryptedBody) => {
       case "SEL_MENU":
         return {
           ...SCREEN_RESPONSES.CANTIDADES,
-          ...data,
-        }
+          data: {
+            ...SCREEN_RESPONSES.CANTIDADES.data,
+            ...data,
+          },
+        };
 
       case "CANTIDADES":
         const { SELECTED_PRODUCTS, OBS_PRODUCTS } =
