@@ -1,4 +1,4 @@
-import { productosBumang } from "./productosBumang";
+import { productosBumang } from "./productosBumang.js";
 
 const SCREEN_RESPONSES = {
   SEL_MENU: {
