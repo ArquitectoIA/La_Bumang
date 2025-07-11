@@ -188,10 +188,9 @@ function formatearResumenPedido(lineasPedido = []) {
   });
 
   const texto = [
-    "*Resumen de tu pedido*",
     ...filas,
-    "______________________",
-    `*Total:* $${formatoCOP.format(total)}`,
+    "\n",
+    "_________________________",
   ].join("\n");
 
   return { texto, total };
