@@ -154,7 +154,7 @@ const SPLIT_ADDITIONAL_AND_NOTES = (dataObj = {}) => {
 function ordenProductos(productos = {}) {
   return Object.entries(productos).map(([producto, cantidadStr]) => {
     const cantidad = parseInt(cantidadStr, 10) || 0;
-    const precioUnitario = productosBumang.menuBumang[producto] ?? 0;
+    const precioUnitario = productosBumang[producto] ?? 0;
 
     return { producto, cantidad, precioUnitario };
   });
@@ -235,29 +235,13 @@ export const getNextScreen = async (decryptedBody) => {
         };
 
       case "CANTIDADES":
-        const { SELECTED_PRODUCTS, OBS_PRODUCTS } =
-          SPLIT_PRODUCTS_AND_NOTES(data);
-        console.log({ SELECTED_PRODUCTS, OBS_PRODUCTS });
 
-        const { productos = {} } = data;
-        const lineasPedido = ordenProductos(productos);
-        const totalPedido = agregarSubtotalyObtenertotal(lineasPedido);
-        const { texto } = formatearResumenPedido(lineasPedido);
-
-        console.log("lineas", lineasPedido);
-        console.log("total", totalPedido);
 
         return {
           ...SCREEN_RESPONSES.ADICIONALES,
           data: {
             ...SCREEN_RESPONSES.ADICIONALES.data,
             ...data,
-            SELECTED_PRODUCTS,
-            OBS_PRODUCTS,
-
-            productos: lineasPedido,
-            valortotal1: totalPedido,
-            mensaje: texto,
           },
         };
 
