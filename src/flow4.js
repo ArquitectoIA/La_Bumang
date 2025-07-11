@@ -189,8 +189,6 @@ function formatearResumenPedido(lineasPedido = []) {
 
   const texto = [
     ...filas,
-    "\n",
-    "_________________________",
   ].join("\n");
 
   return { texto, total };
