@@ -151,7 +151,6 @@ const SPLIT_ADDITIONAL_AND_NOTES = (dataObj = {}) => {
   return { SELECTED_ADDITIONAL, OBS_ADDITIONAL };
 };
 
-
 function ordenProductos(productos = {}) {
   return Object.entries(productos).map(([producto, cantidadStr]) => {
     const cantidad = parseInt(cantidadStr, 10) || 0;
@@ -192,7 +191,6 @@ function formatearResumenPedido(lineasPedido = []) {
 
   return { texto, total };
 }
-
 
 export const getNextScreen = async (decryptedBody) => {
   const { screen, data, version, action, flow_token } = decryptedBody;
@@ -249,9 +247,6 @@ export const getNextScreen = async (decryptedBody) => {
         console.log("lineas", lineasPedido);
         console.log("total", totalPedido);
 
-
-
-
         return {
           ...SCREEN_RESPONSES.ADICIONALES,
           data: {
@@ -262,7 +257,7 @@ export const getNextScreen = async (decryptedBody) => {
 
             productos: lineasPedido,
             valortotal1: totalPedido,
-            mensaje: texto
+            mensaje: texto,
           },
         };
 
