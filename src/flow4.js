@@ -264,7 +264,7 @@ export const getNextScreen = async (decryptedBody) => {
           adicionales = {},
           bebidas = {},
           obs_productos = "",
-          obs_adcionales = "",
+          obs_adicionales = "",
         } = data ?? {};
 
         const productosPedido = { ...productos, ...adicionales, ...bebidas };
