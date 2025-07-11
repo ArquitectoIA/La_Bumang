@@ -102,6 +102,11 @@ const SCREEN_RESPONSES = {
     },
   },
 
+  FINAL: {
+    screen: "FINAL",
+    data: {},
+  },
+
   SUCCESS: {
     screen: "SUCCESS",
     data: {
@@ -235,8 +240,6 @@ export const getNextScreen = async (decryptedBody) => {
         };
 
       case "CANTIDADES":
-
-
         return {
           ...SCREEN_RESPONSES.ADICIONALES,
           data: {
@@ -246,18 +249,41 @@ export const getNextScreen = async (decryptedBody) => {
         };
 
       case "ADICIONALES":
-        // TODO here process user selected preferences and return customised offer
-        const { SELECTED_ADDITIONAL, OBS_ADDITIONAL } =
-          SPLIT_ADDITIONAL_AND_NOTES(data);
-        console.log({ SELECTED_ADDITIONAL, OBS_ADDITIONAL });
         return {
           ...SCREEN_RESPONSES.BEBIDAS,
           data: {
-            // copy initial screen data then override specific fields
-            ...data,
             ...SCREEN_RESPONSES.BEBIDAS.data,
-            SELECTED_ADDITIONAL,
-            OBS_ADDITIONAL,
+            ...data,
+          },
+        };
+
+      case "BEBIDAS":
+
+        const {
+          productos: prod = {},
+          adicionales: adc = {},
+          obs_productos = "",
+          obs_adcionales = "",
+        } = data ?? {};
+
+        const productosPedido = { ...productos, ...adicionales, ...bebidas };
+
+        const lineasPedido = ordenProductos(productosPedido);
+        const totalPedido = agregarSubtotalyObtenertotal(lineasPedido);
+        const { texto } = formatearResumenPedido(lineasPedido);
+
+        console.log("lineas", lineasPedido);
+        console.log("total", totalPedido);
+
+
+        return {
+          ...SCREEN_RESPONSES.FINAL,
+          data: {
+            ...SCREEN_RESPONSES.FINAL.data,
+            mensaje: texto,
+            valortotal1: totalPedido,
+            obs_productos: obs_productos,
+            obs_adcionales: obs_adcionales
           },
         };
 
