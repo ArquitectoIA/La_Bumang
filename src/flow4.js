@@ -260,8 +260,9 @@ export const getNextScreen = async (decryptedBody) => {
       case "BEBIDAS":
 
         const {
-          productos: prod = {},
-          adicionales: adc = {},
+          productos = {},
+          adicionales = {},
+          bebidas = {},
           obs_productos = "",
           obs_adcionales = "",
         } = data ?? {};
