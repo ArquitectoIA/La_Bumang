@@ -14,10 +14,12 @@ app.use(
   }),
 );
 
-const { APP_SECRET, PASSPHRASE = "", PORT = "3000" } = process.env;
+const { APP_SECRET, PRIVATE_KEY, PASSPHRASE = "", PORT = "3000" } = process.env;
 
+/*
 const RAW_PRIVATE_KEY = process.env.PRIVATE_KEY ?? "";
 const PRIVATE_KEY = RAW_PRIVATE_KEY.replace(/\\n/g, "\n").trim();
+*/
 
 /*
 Example:
