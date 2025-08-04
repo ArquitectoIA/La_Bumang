@@ -189,7 +189,7 @@ function formatearResumenPedido(lineasPedido = []) {
 
   const texto = [...filas].join("\n");
 
-  totalString = toString(formatoCOP.format(total));
+  const totalString = toString(formatoCOP.format(total));
 
   return { texto, total, totalString };
 }
