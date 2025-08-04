@@ -269,19 +269,15 @@ export const getNextScreen = async (decryptedBody) => {
         const totalPedido = agregarSubtotalyObtenertotal(lineasPedido);
         const { texto, totalString } = formatearResumenPedido(lineasPedido);
 
-        console.log("lineas", lineasPedido);
-        console.log("total", totalPedido);
-        console.log(totalString);
-        console.log(typeof(totalString));
-
         return {
           ...SCREEN_RESPONSES.FINAL,
           data: {
             ...SCREEN_RESPONSES.FINAL.data,
             mensaje: texto,
-            valortotal1: totalPedido,
-            obs_productos: obs_productos,
-            obs_adcionales: obs_adicionales,
+            valorTotal: totalPedido,
+            valorTotalStr: totalString,
+            obsProductos: obs_productos,
+            obsAdcionales: obs_adicionales,
           },
         };
 
