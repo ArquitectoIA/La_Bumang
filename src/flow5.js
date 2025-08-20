@@ -107,6 +107,11 @@ const SCREEN_RESPONSES = {
     data: {},
   },
 
+  MET_ENTREGA: {
+    screen: "MET_ENTREGA",
+    data: {},
+  },
+
   SUCCESS: {
     screen: "SUCCESS",
     data: {
@@ -278,6 +283,15 @@ export const getNextScreen = async (decryptedBody) => {
             valorTotalStr: totalString,
             obsProductos: obs_productos,
             obsAdcionales: obs_adicionales,
+          },
+        };
+
+      case "FINAL":
+        return {
+          ...SCREEN_RESPONSES.MET_ENTREGA,
+          data: {
+            ...SCREEN_RESPONSES.MET_ENTREGA.data,
+            ...data,
           },
         };
 
