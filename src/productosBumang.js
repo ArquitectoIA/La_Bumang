@@ -26,7 +26,7 @@ export const productosBumang = {
     "perro tocineta sin papa": 30000,
     "perro tocineta con papa": 38500,
     "perro especial con pollo y tocineta sin papa": 37500,
-    "perro especial con pollo y tocineta con papa": 45000,
+    "perro especial con pollo y tocineta con papa": 45500,
 
     "papas xl": 22000,
     "salchipapa xl": 33000,
