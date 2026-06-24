@@ -2,7 +2,7 @@ export const productosBumang = {
   "hamburguesa tradicional sin papa": 11000,
   "hamburguesa tradicional con papa": 19000,
   "hamburguesa carne pollo sin papa": 14500,
-  "hamburguesa carne pollo con papa": 19900, //22500
+  "hamburguesa carne pollo con papa": 22500,
   "hamburguesa carne tocineta sin papa": 14500,
   "hamburguesa carne tocineta con papa": 22500,
   "hamburguesa especial sin papa": 18500,
