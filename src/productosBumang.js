@@ -45,6 +45,7 @@ export const productosBumang = {
   "gaseosa kola pet 400ml": 4000,
   "gaseosa colombiana pet 400ml": 4000,
   "gaseosa uva pet 400ml": 4000,
+  "gaseosa piña pet 400ml": 4000,
   "jugo hit tropical 500ml": 5000,
   "jugo hit mango 500ml": 5000,
   "jugo hit mora 500ml": 5000,

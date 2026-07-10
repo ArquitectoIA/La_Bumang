@@ -92,6 +92,7 @@ export const SCREEN_RESPONSES = {
       chk_gas_kola: false,
       chk_gas_colombiana: false,
       chk_gas_uva: false,
+      chk_gas_pina: false,
       chk_hit_tropical: false,
       chk_hit_mango: false,
       chk_hit_mora: false,
